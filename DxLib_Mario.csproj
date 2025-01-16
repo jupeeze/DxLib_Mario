@@ -40,6 +40,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\tileset.png" />
     <Content Include="DxLib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -49,6 +50,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Ground.cs" />
     <Compile Include="Code\Program.cs" />
     <Compile Include="DxDLL.cs" />
   </ItemGroup>
@@ -58,5 +60,6 @@
       <HintPath>.\DxLibDotNet.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
