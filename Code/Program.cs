@@ -11,18 +11,25 @@ internal static class Game {
 
     private static void Load() {
         Ground.Load();
+        Player.Load();
     }
 
     private static void Loop() {
         while (DX.ProcessMessage() == 0) {
+            Update();
             Draw();
         }
+    }
+
+    private static void Update() {
+        Player.Update();
     }
 
     private static void Draw() {
         DX.ClearDrawScreen();
 
         Ground.Draw();
+        Player.Draw();
 
         DX.ScreenFlip();
     }

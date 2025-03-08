@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\tileset_ground.png" />
+    <Content Include="Assets\tileset_ramina.png" />
     <Content Include="DxLib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -51,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\Ground.cs" />
+    <Compile Include="Code\Player.cs" />
     <Compile Include="Code\Program.cs" />
     <Compile Include="DxDLL.cs" />
   </ItemGroup>
