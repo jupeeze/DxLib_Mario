@@ -1,12 +1,12 @@
 ﻿using DxLibDLL;
 
-internal class Ground {
+internal static class Ground {
     private static readonly int TILE_COUNT = Program.SCREEN_X / Game.GROUND_SIZE + 1;
 
     private static int[] _groundImages;
 
     public static void Load() {
-        _groundImages = Program.LoadSprites(@"tileset.png", 25, 23, 16, 16);
+        _groundImages = Program.LoadSprites(@"tileset_ground.png", 25, 23, 16, 16);
     }
 
     public static void Draw() {
