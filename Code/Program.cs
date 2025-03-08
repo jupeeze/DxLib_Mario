@@ -40,6 +40,8 @@ internal static class Program {
 
     public static string ASSET_PATH = @"..\..\Assets\";
 
+    public static readonly uint BLUE_COLOR = DX.GetColor(0, 0, 255);
+
     private static void Main() {
         Init();
 
