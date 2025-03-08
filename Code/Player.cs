@@ -10,8 +10,10 @@ internal static class Player {
     private static int _imagePosY2 = Game.GROUND_POS;
 
     private static int _gravity = 0;
+    private static int _movement = 0;
 
     private static int _imageNum = 0;
+    private static int _imageNumBase = 0;
     private static int[] _playerImages;
 
     public static int ImagePosX1 => ImagePosX2 - (2 * SIZE_X);
@@ -67,14 +69,25 @@ internal static class Player {
     }
 
     private static void HandleInput() {
-        bool isMouseLeftClicked = (DX.GetMouseInput() == DX.MOUSE_INPUT_LEFT);
+        bool isDButtonClicked = (DX.CheckHitKey(DX.KEY_INPUT_A) == 1);
+        if (isDButtonClicked) { _movement = 2; }
 
+        bool isAButtonClicked = (DX.CheckHitKey(DX.KEY_INPUT_E) == 1);
+        if (isAButtonClicked) { _movement = -2; }
+
+        if (!isDButtonClicked && !isAButtonClicked) { _movement = 0; }
+
+
+        bool isMouseLeftClicked = (DX.GetMouseInput() == DX.MOUSE_INPUT_LEFT);
         if (isMouseLeftClicked && IsGround())
             State = PlayerState.Jumping;
     }
 
     private static void UpdatePosition() {
         _imagePosY2 += _gravity;
+
+        if (_movement != 0) State = PlayerState.Running;
+        _imagePosX2 = Math.Max(_imagePosX2 + _movement, ImagePosX2 - ImagePosX1);
     }
 
     #endregion Update
@@ -88,14 +101,17 @@ internal static class Player {
     }
 
     private static int GetCurrentImage() {
+        _imageNumBase = (_movement == 0) ? _imageNumBase :
+                        (_movement > 0) ? 0 : 3;
+
         switch (State) {
             case PlayerState.Idle:
-                return _playerImages[0];
+                return _playerImages[_imageNumBase];
 
             case PlayerState.Running:
             case PlayerState.Jumping:
                 _imageNum ^= 1;
-                return _playerImages[1 + _imageNum];
+                return _playerImages[_imageNumBase + _imageNum + 1];
 
             default: throw new InvalidOperationException();
         }
