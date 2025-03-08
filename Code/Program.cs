@@ -4,6 +4,8 @@ internal static class Game {
     public static readonly int GROUND_SIZE = 32;
     public static readonly int GROUND_POS = Program.SCREEN_Y - GROUND_SIZE;
 
+    public static int CameraOffsetX = 0;
+
     public static void Run() {
         Load();
         Loop();

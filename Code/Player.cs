@@ -87,7 +87,11 @@ internal static class Player {
         _imagePosY2 += _gravity;
 
         if (_movement != 0) State = PlayerState.Running;
-        _imagePosX2 = Math.Max(_imagePosX2 + _movement, ImagePosX2 - ImagePosX1);
+        if (_imagePosX2 >= Program.SCREEN_X / 2 && _movement > 0) {
+            Game.CameraOffsetX += _movement;
+        } else {
+            _imagePosX2 = Math.Max(_imagePosX2 + _movement, ImagePosX2 - ImagePosX1);
+        }
     }
 
     #endregion Update

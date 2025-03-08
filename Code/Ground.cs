@@ -11,7 +11,7 @@ internal static class Ground {
 
     public static void Draw() {
         for (int i = 0; i < TILE_COUNT; i++) {
-            Program.DrawEXGraph(i * Game.GROUND_SIZE, Game.GROUND_POS, Game.GROUND_SIZE, Game.GROUND_SIZE, _groundImages[28]);
+            Program.DrawEXGraph(i * Game.GROUND_SIZE - Game.CameraOffsetX, Game.GROUND_POS, Game.GROUND_SIZE, Game.GROUND_SIZE, _groundImages[28]);
         }
     }
 }
